@@ -8,6 +8,6 @@
 <Header headerText='Home page'/>
 <div class="mt-16 flex flex-col items-center">
 <p class="mb-2">Did you know?</p>
-    <p class="mb-5 italic">{data.fact}</p>
-    <img src={data.imageUrl} alt="dog" class="max-w-lg max-h-[500px]">
+    <p class="px-4 mb-2 italic">{data.fact}</p>
+    <img src={data.imageUrl} alt="dog" class="p-4 max-w-80vw max-h-[500px]">
 </div>
