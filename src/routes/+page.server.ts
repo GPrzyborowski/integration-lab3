@@ -3,7 +3,6 @@ export async function load() {
 	const textRes = await fetch('http://localhost:5173/api/dog/fact')
 	const img = await imgRes.json()
 	const text = await textRes.json()
-	console.log(text)
 	return {
         imageUrl: img.message as string,
         fact: text.fact as string
