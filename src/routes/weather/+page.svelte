@@ -16,12 +16,10 @@
             if(chart) {
                 chart.destroy
             }
-            console.log(form.forecast.hourly.time);
             hours = form.forecast.hourly.time.map((date: string) => {
                 const hour = new Date(date).getHours();
                 return `${String(hour).padStart(2, '0')}:00`;
             });
-            console.log(hours);
             chart = new Chart(canvas, {
                 type: 'line',
                 data: {
@@ -75,5 +73,10 @@
             <canvas bind:this={canvas}></canvas>
         {/if}
     </div>
-    <div class="h-[400px] bg-blue-200"></div>
+    <div class="h-[400px] mt-18">
+        {#if form}
+            <p class="mb-10">Current temperature: <span class="font-bold">{form?.forecast.hourly.temperature_2m[0]}°C</span></p>
+            <p class="pe-24 text-justify">{form?.response}</p>
+        {/if}
+    </div>
 </div>
