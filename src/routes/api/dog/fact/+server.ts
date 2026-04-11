@@ -1,10 +1,10 @@
 import { json } from '@sveltejs/kit'
-import { dogFacts } from '$lib/data/dog-facts'
+import { randomFact } from '$lib/factUtils'
 
 export async function GET() {
-	const randomFact = dogFacts[Math.floor(Math.random() * dogFacts.length)]
-	if (!randomFact) {
+	const fact = randomFact()
+	if (!fact) {
 		return json({ error: 'No facts available' }, { status: 500 })
 	}
-	return json({ fact: randomFact }, { status: 200 })
+	return json({ fact: fact }, { status: 200 })
 }
