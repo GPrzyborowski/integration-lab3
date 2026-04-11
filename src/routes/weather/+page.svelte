@@ -5,6 +5,7 @@
     import Navbar from "$lib/components/Navbar.svelte";
     import Chart from 'chart.js/auto'
     let { form } = $props()
+    let pendingCity = $state('')
     let cityValue = $state('')
     let cityToDisplay = $state('')
     let chart: Chart
@@ -56,13 +57,19 @@
 <Navbar />
 <Header headerText='Weather'/>
 
-<form method="POST" action="?/weather" use:enhance class="flex flex-col items-center">
+<form method="POST" action="?/weather" use:enhance={() => {
+    pendingCity = cityValue
+    return async ({ update }) => {
+        await update()
+        cityToDisplay = pendingCity
+    }
+}} class="flex flex-col items-center">
     <div class="flex flex-col mt-12 mb-4">
         <label for="city">City:</label>
         <input id="city" name="city" type="text" bind:value={cityValue} class="border px-2 py-1">
     </div>
     <div>
-        <button onclick={() => cityToDisplay = cityValue} type="submit" class="border px-2 py-1 cursor-pointer hover:text-white hover:bg-black duration-100">Show weather</button>
+        <button type="submit" class="border px-2 py-1 cursor-pointer hover:text-white hover:bg-black duration-100">Show weather</button>
     </div>
 </form>
 
