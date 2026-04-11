@@ -76,7 +76,7 @@
     <div class="h-[400px] mt-18">
         {#if form}
             <p class="mb-2">Current temperature: <span class="font-bold">{form?.forecast.hourly.temperature_2m[0]}°C</span></p>
-            <p class="mb-6">Average temperature for today: <span class="font-bold">{form?.averageTemp}</span></p>
+            <p class="mb-6">Average temperature for today: <span class="font-bold">{form?.averageTemp}°C</span></p>
             <p class="pe-24 text-justify">{form?.response}</p>
         {/if}
     </div>
