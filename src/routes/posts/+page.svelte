@@ -62,9 +62,9 @@ $effect(() => {
     </div>
 </div>
 <p class="mt-12 text-center lg:text-left lg:ps-36 font-bold">Most active user's posts:</p>
-<div class="w-full mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4 px-6 lg:px-36">
+<div class="w-full my-6 grid grid-cols-1 lg:grid-cols-3 gap-4 px-6 lg:px-36">
     {#each data.topUserPosts as post}
-        <Post 
+        <Post
             author={data.topUser.name} 
             title={post.title} 
             content={post.body} 
