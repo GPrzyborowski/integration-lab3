@@ -13,7 +13,7 @@ Sprawdzenie wersji Bun:
 bun --version
 ```
 
-##### Jeżeli brak, należy zainstalować Bun:
+#### Jeżeli brak, należy zainstalować Bun:
 
 Windows:
 ```bash
