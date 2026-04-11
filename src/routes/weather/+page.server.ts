@@ -35,7 +35,7 @@ export const actions = {
 				},
 			}
 			const response = await ai.models.generateContent({
-				model: 'gemini-2.5-flash',
+				model: 'gemini-2.5-flash-lite',
 				contents: `${JSON.stringify(slicedForecast.hourly)} based on this hourly weather forecast data generate a 3-4 sentence summary of today's temperature (in celsius scale) and some recommendations for someone planning to go outside. Return only the answer without any intro.`,
 			})
 			const query = slicedForecast.hourly.temperature_2m.map((temp: number) => `temperatures=${temp}`).join('&')
