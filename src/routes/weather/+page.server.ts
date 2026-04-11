@@ -27,12 +27,13 @@ export const actions = {
 				temperature_2m: forecastData.hourly.temperature_2m.slice(startIndex, startIndex + 24),
 			},
 		}
-
 		const response = await ai.models.generateContent({
-			model: 'gemini-2.5-flash-lite',
+			model: 'gemini-2.5-flash',
 			contents: `${JSON.stringify(slicedForecast.hourly)} based on this hourly weather forecast data generate a 3-4 sentence summary of today's temperature (in celsius scale) and some recommendations for someone planning to go outside. Return only the answer without any intro.`,
 		})
-
-		return { forecast: slicedForecast, response: response.text }
+		const query = slicedForecast.hourly.temperature_2m.map((temp: number) => `temperatures=${temp}`).join('&')
+		const averageTemperatureRes = await axios.get(`http://localhost:5173/api/average-temp?${query}`)
+		const averageTemperature = averageTemperatureRes.data.averageTemp
+		return { forecast: slicedForecast, response: response.text, averageTemp: averageTemperature }
 	},
 }
